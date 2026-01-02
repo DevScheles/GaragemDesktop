@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GaragemDesktop.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,18 @@ using System.Windows.Forms;
 
 namespace GaragemDesktop
 {
-    public partial class frmLogin : Form
+    public partial class frmTelaLogin : Form
     {
-        public frmLogin()
+        public frmTelaLogin()
         {
             InitializeComponent();
+            Util.ConfigurarFormulário(this, Texto.TITULO_LOGIN);
         }
+
+        private void TelaLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

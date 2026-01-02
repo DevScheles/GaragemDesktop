@@ -46,16 +46,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Classes\MenuStripRenderer.cs" />
+    <Compile Include="Classes\RenderDeSelecaoMenuStrip.cs" />
+    <Compile Include="Classes\RoundButtonUltraLight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\RoundComboBox.cs" />
+    <Compile Include="Classes\RoundMaskedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Texto.cs" />
+    <Compile Include="Classes\TituloBotao.cs" />
+    <Compile Include="Classes\Util.cs" />
+    <Compile Include="frmAdicionais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="frmAdicionais.Designer.cs">
+      <DependentUpon>frmAdicionais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultarVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarVendas.Designer.cs">
+      <DependentUpon>frmConsultarVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultarVendasVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarVendasVendedor.Designer.cs">
+      <DependentUpon>frmConsultarVendasVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModelo.Designer.cs">
+      <DependentUpon>FrmModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisarVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisarVeiculo.Designer.cs">
+      <DependentUpon>frmPesquisarVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistroMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroMarcas.Designer.cs">
+      <DependentUpon>frmRegistroMarcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubirOnline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubirOnline.Designer.cs">
+      <DependentUpon>frmSubirOnline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVendedor.Designer.cs">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="frmTelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTelaLogin.Designer.cs">
+      <DependentUpon>frmTelaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVeiculo.Designer.cs">
+      <DependentUpon>frmVeiculo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAdicionais.resx">
+      <DependentUpon>frmAdicionais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarVendas.resx">
+      <DependentUpon>frmConsultarVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarVendasVendedor.resx">
+      <DependentUpon>frmConsultarVendasVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModelo.resx">
+      <DependentUpon>FrmModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisarVeiculo.resx">
+      <DependentUpon>frmPesquisarVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroMarcas.resx">
+      <DependentUpon>frmRegistroMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubirOnline.resx">
+      <DependentUpon>frmSubirOnline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVendedor.resx">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +161,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="frmTelaLogin.resx">
+      <DependentUpon>frmTelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVeiculo.resx">
+      <DependentUpon>frmVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +181,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_desligado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_ligado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adicionar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_Cadastrar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Cadastros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Vendedores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Vendas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Veiculos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Vendedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vista-frontal-de-carros-viajando-empilhados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Carros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Sair.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
