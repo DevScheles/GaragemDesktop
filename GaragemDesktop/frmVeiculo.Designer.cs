@@ -57,13 +57,13 @@
             this.txtQuilometragem = new System.Windows.Forms.TextBox();
             this.cbSelecioneModelo = new System.Windows.Forms.ComboBox();
             this.txtValorVenda = new System.Windows.Forms.TextBox();
-            this.txtSituacao = new System.Windows.Forms.TextBox();
             this.txtAno = new System.Windows.Forms.MaskedTextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.cbSituacao = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -403,16 +403,6 @@
             this.txtValorVenda.Size = new System.Drawing.Size(227, 36);
             this.txtValorVenda.TabIndex = 1112;
             // 
-            // txtSituacao
-            // 
-            this.txtSituacao.BackColor = System.Drawing.Color.Maroon;
-            this.txtSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSituacao.ForeColor = System.Drawing.Color.White;
-            this.txtSituacao.Location = new System.Drawing.Point(1004, 230);
-            this.txtSituacao.Name = "txtSituacao";
-            this.txtSituacao.Size = new System.Drawing.Size(227, 36);
-            this.txtSituacao.TabIndex = 1113;
-            // 
             // txtAno
             // 
             this.txtAno.BackColor = System.Drawing.Color.Maroon;
@@ -504,12 +494,27 @@
             this.btnPesquisar.UseVisualStyleBackColor = false;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
+            // cbSituacao
+            // 
+            this.cbSituacao.BackColor = System.Drawing.Color.Maroon;
+            this.cbSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbSituacao.FormattingEnabled = true;
+            this.cbSituacao.Items.AddRange(new object[] {
+            "Inativo",
+            "Ativo",
+            "Vendido"});
+            this.cbSituacao.Location = new System.Drawing.Point(1004, 228);
+            this.cbSituacao.Name = "cbSituacao";
+            this.cbSituacao.Size = new System.Drawing.Size(227, 37);
+            this.cbSituacao.TabIndex = 1120;
+            // 
             // frmVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1440, 851);
+            this.Controls.Add(this.cbSituacao);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.pictureBox6);
@@ -517,7 +522,6 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtAno);
-            this.Controls.Add(this.txtSituacao);
             this.Controls.Add(this.txtValorVenda);
             this.Controls.Add(this.cbSelecioneModelo);
             this.Controls.Add(this.txtQuilometragem);
@@ -592,12 +596,12 @@
         private System.Windows.Forms.TextBox txtQuilometragem;
         private System.Windows.Forms.ComboBox cbSelecioneModelo;
         private System.Windows.Forms.TextBox txtValorVenda;
-        private System.Windows.Forms.TextBox txtSituacao;
         private System.Windows.Forms.MaskedTextBox txtAno;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.ComboBox cbSituacao;
     }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="46711c84acf84ca8866170fe391fb6b4" Name="Diagram1">
+        <EntityTypeShape EntityType="db_garagem.Acesso" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Adicional" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Cliente" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Foto" Width="1.5" PointX="9.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Garagem" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Marca" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Modelo" Width="1.5" PointX="5.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Veiculo" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Venda" Width="1.5" PointX="10.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_garagem.Vendedor" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <AssociationConnector Association="db_garagem.FK_Acesso_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Acesso_Vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Adicional_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Cliente_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Cliente_Vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Venda_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Foto_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Foto_Veiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Marca_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Veiculo_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Venda_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Vendedor_Garagem" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Modelo_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Veiculo_Modelo" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.FK_Venda_Veiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="db_garagem.VeiculoAdicional" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -13,6 +13,9 @@ namespace GaragemDesktop.Classes
 
     {
 
+        public static int CodigoLogado = 1;
+        
+
         public enum TipoMsg
         {
             Erro,

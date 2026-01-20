@@ -55,6 +55,8 @@
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtComissao = new System.Windows.Forms.TextBox();
+            this.lblComissao = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -93,14 +95,14 @@
             this.grdResultado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdResultado.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.grdResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdResultado.Location = new System.Drawing.Point(406, 460);
+            this.grdResultado.Location = new System.Drawing.Point(406, 508);
             this.grdResultado.MultiSelect = false;
             this.grdResultado.Name = "grdResultado";
             this.grdResultado.ReadOnly = true;
             this.grdResultado.RowHeadersWidth = 51;
             this.grdResultado.RowTemplate.Height = 24;
             this.grdResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdResultado.Size = new System.Drawing.Size(1045, 296);
+            this.grdResultado.Size = new System.Drawing.Size(1045, 274);
             this.grdResultado.TabIndex = 1066;
             this.grdResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdResultado_CellClick);
             // 
@@ -165,7 +167,7 @@
             this.lblFiltrarPeloNome.AutoSize = true;
             this.lblFiltrarPeloNome.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltrarPeloNome.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblFiltrarPeloNome.Location = new System.Drawing.Point(361, 406);
+            this.lblFiltrarPeloNome.Location = new System.Drawing.Point(361, 444);
             this.lblFiltrarPeloNome.Name = "lblFiltrarPeloNome";
             this.lblFiltrarPeloNome.Size = new System.Drawing.Size(190, 28);
             this.lblFiltrarPeloNome.TabIndex = 1074;
@@ -179,9 +181,9 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-5, 461);
+            this.pictureBox1.Location = new System.Drawing.Point(-5, 509);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(414, 293);
+            this.pictureBox1.Size = new System.Drawing.Size(424, 293);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1075;
             this.pictureBox1.TabStop = false;
@@ -196,7 +198,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(-23, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(353, 262);
+            this.pictureBox2.Size = new System.Drawing.Size(363, 284);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1072;
             this.pictureBox2.TabStop = false;
@@ -217,7 +219,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.DarkRed;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(754, 326);
+            this.pictureBox3.Location = new System.Drawing.Point(754, 364);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(36, 47);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -232,7 +234,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(763, 326);
+            this.btnExcluir.Location = new System.Drawing.Point(763, 364);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(161, 47);
             this.btnExcluir.TabIndex = 8;
@@ -244,7 +246,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.RoyalBlue;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(515, 326);
+            this.pictureBox4.Location = new System.Drawing.Point(515, 364);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(36, 47);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -259,7 +261,7 @@
             this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnAlterar.ForeColor = System.Drawing.Color.White;
-            this.btnAlterar.Location = new System.Drawing.Point(516, 326);
+            this.btnAlterar.Location = new System.Drawing.Point(516, 364);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(180, 47);
             this.btnAlterar.TabIndex = 7;
@@ -271,7 +273,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(269, 326);
+            this.pictureBox9.Location = new System.Drawing.Point(269, 364);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(37, 47);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -286,7 +288,7 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(269, 326);
+            this.btnAdicionar.Location = new System.Drawing.Point(269, 364);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(180, 47);
             this.btnAdicionar.TabIndex = 6;
@@ -298,7 +300,7 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(1004, 326);
+            this.pictureBox10.Location = new System.Drawing.Point(1004, 364);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(34, 45);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -313,7 +315,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(1001, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(1001, 364);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(180, 45);
             this.btnCancelar.TabIndex = 9;
@@ -378,17 +380,40 @@
             this.textBox4.BackColor = System.Drawing.Color.Maroon;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(587, 402);
+            this.textBox4.Location = new System.Drawing.Point(587, 440);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(576, 36);
             this.textBox4.TabIndex = 10;
+            // 
+            // txtComissao
+            // 
+            this.txtComissao.BackColor = System.Drawing.Color.Maroon;
+            this.txtComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComissao.ForeColor = System.Drawing.Color.White;
+            this.txtComissao.Location = new System.Drawing.Point(484, 293);
+            this.txtComissao.Name = "txtComissao";
+            this.txtComissao.Size = new System.Drawing.Size(326, 36);
+            this.txtComissao.TabIndex = 1123;
+            // 
+            // lblComissao
+            // 
+            this.lblComissao.AutoSize = true;
+            this.lblComissao.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComissao.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblComissao.Location = new System.Drawing.Point(363, 297);
+            this.lblComissao.Name = "lblComissao";
+            this.lblComissao.Size = new System.Drawing.Size(115, 28);
+            this.lblComissao.TabIndex = 1124;
+            this.lblComissao.Text = "COMISSÃO:";
             // 
             // frmVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.ClientSize = new System.Drawing.Size(1433, 754);
+            this.ClientSize = new System.Drawing.Size(1443, 776);
+            this.Controls.Add(this.txtComissao);
+            this.Controls.Add(this.lblComissao);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCpf);
@@ -459,5 +484,7 @@
         private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtComissao;
+        private System.Windows.Forms.Label lblComissao;
     }
 }

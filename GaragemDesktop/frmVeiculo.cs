@@ -83,9 +83,9 @@ namespace GaragemDesktop
                 flag = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtSituacao.Text))
+            if (cbSituacao.SelectedIndex == -1)
             {
-                campos += lblSituacao.Text + "\n";
+                campos += lblSelecioneMarca.Text + "\n";
                 flag = false;
             }
 
@@ -102,6 +102,12 @@ namespace GaragemDesktop
                 flag = false;
             }
 
+            if (cbSituacao.SelectedIndex == -1)
+            {
+                campos += lblSituacao.Text + "\n";
+                flag = false;
+            }
+
             if (!flag)
             {
                 Util.ExibirMsg(Util.TipoMsg.Atencao,campos);
@@ -115,7 +121,6 @@ namespace GaragemDesktop
         {
             txtAno.Clear();
             txtQuilometragem.Clear();
-            txtSituacao.Clear();
             txtValorCompra.Clear();
             txtValorVenda.Clear();
         }

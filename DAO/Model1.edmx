@@ -1,0 +1,966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_garagemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acesso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+          <Property Name="VendedorId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Adicional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Telefone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="200" />
+          <Property Name="VendedorId" Type="int" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VeiculoId" Type="int" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Garagem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Placa" Type="varchar" MaxLength="10" />
+          <Property Name="Ano" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Leilao" Type="tinyint" Nullable="false" />
+          <Property Name="Km" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Situacao" Type="int" Nullable="false" />
+          <Property Name="ValorCompra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ValorVenda" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="1000" />
+          <Property Name="ModeloId" Type="int" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VeiculoAdicional">
+          <Key>
+            <PropertyRef Name="VeiculoId" />
+            <PropertyRef Name="AdicionalId" />
+          </Key>
+          <Property Name="VeiculoId" Type="int" Nullable="false" />
+          <Property Name="AdicionalId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FormaPgto" Type="int" Nullable="false" />
+          <Property Name="VeiculoId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="200" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vendedor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Telefone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Endereco" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GaragemId" Type="int" Nullable="false" />
+          <Property Name="Comissao" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Acesso_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acesso_Vendedor">
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="1" />
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adicional_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Adicional" Type="Self.Adicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adicional">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Vendedor">
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foto_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Foto" Type="Self.Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Foto">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foto_Veiculo">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="Foto" Type="Self.Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Foto">
+              <PropertyRef Name="VeiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Marca">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modelo_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Modelo">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VeiculoAdicional_Adicional">
+          <End Role="Adicional" Type="Self.Adicional" Multiplicity="1" />
+          <End Role="VeiculoAdicional" Type="Self.VeiculoAdicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adicional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VeiculoAdicional">
+              <PropertyRef Name="AdicionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VeiculoAdicional_Veiculo">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="VeiculoAdicional" Type="Self.VeiculoAdicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VeiculoAdicional">
+              <PropertyRef Name="VeiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Veiculo">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="VeiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendedor_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendedor">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_garagemModelStoreContainer">
+          <EntitySet Name="Acesso" EntityType="Self.Acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adicional" EntityType="Self.Adicional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Garagem" EntityType="Self.Garagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VeiculoAdicional" EntityType="Self.VeiculoAdicional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venda" EntityType="Self.Venda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedor" EntityType="Self.Vendedor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Acesso_Garagem" Association="Self.FK_Acesso_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Acesso" EntitySet="Acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acesso_Vendedor" Association="Self.FK_Acesso_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Acesso" EntitySet="Acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adicional_Garagem" Association="Self.FK_Adicional_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Adicional" EntitySet="Adicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Garagem" Association="Self.FK_Cliente_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Vendedor" Association="Self.FK_Cliente_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foto_Garagem" Association="Self.FK_Foto_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Foto" EntitySet="Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foto_Veiculo" Association="Self.FK_Foto_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Foto" EntitySet="Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca_Garagem" Association="Self.FK_Marca_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Marca" EntitySet="Marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Marca" Association="Self.FK_Modelo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Garagem" Association="Self.FK_Veiculo_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Modelo" Association="Self.FK_Veiculo_Modelo">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VeiculoAdicional_Adicional" Association="Self.FK_VeiculoAdicional_Adicional">
+            <End Role="Adicional" EntitySet="Adicional" />
+            <End Role="VeiculoAdicional" EntitySet="VeiculoAdicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VeiculoAdicional_Veiculo" Association="Self.FK_VeiculoAdicional_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="VeiculoAdicional" EntitySet="VeiculoAdicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Cliente" Association="Self.FK_Venda_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Garagem" Association="Self.FK_Venda_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Veiculo" Association="Self.FK_Venda_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendedor_Garagem" Association="Self.FK_Vendedor_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Vendedor" EntitySet="Vendedor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_garagem" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Acesso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <Property Name="VendedorId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Acesso_Garagem" FromRole="Acesso" ToRole="Garagem" />
+          <NavigationProperty Name="Vendedor" Relationship="Self.FK_Acesso_Vendedor" FromRole="Acesso" ToRole="Vendedor" />
+        </EntityType>
+        <EntityType Name="Adicional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Adicional_Garagem" FromRole="Adicional" ToRole="Garagem" />
+          <NavigationProperty Name="Veiculo" Relationship="Self.VeiculoAdicional" FromRole="Adicional" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Obs" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendedorId" Type="Int32" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Cliente_Garagem" FromRole="Cliente" ToRole="Garagem" />
+          <NavigationProperty Name="Vendedor" Relationship="Self.FK_Cliente_Vendedor" FromRole="Cliente" ToRole="Vendedor" />
+          <NavigationProperty Name="Venda" Relationship="Self.FK_Venda_Cliente" FromRole="Cliente" ToRole="Venda" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VeiculoId" Type="Int32" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Foto_Garagem" FromRole="Foto" ToRole="Garagem" />
+          <NavigationProperty Name="Veiculo" Relationship="Self.FK_Foto_Veiculo" FromRole="Foto" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Garagem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Acesso" Relationship="Self.FK_Acesso_Garagem" FromRole="Garagem" ToRole="Acesso" />
+          <NavigationProperty Name="Adicional" Relationship="Self.FK_Adicional_Garagem" FromRole="Garagem" ToRole="Adicional" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Garagem" FromRole="Garagem" ToRole="Cliente" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_Foto_Garagem" FromRole="Garagem" ToRole="Foto" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Marca_Garagem" FromRole="Garagem" ToRole="Marca" />
+          <NavigationProperty Name="Veiculo" Relationship="Self.FK_Veiculo_Garagem" FromRole="Garagem" ToRole="Veiculo" />
+          <NavigationProperty Name="Venda" Relationship="Self.FK_Venda_Garagem" FromRole="Garagem" ToRole="Venda" />
+          <NavigationProperty Name="Vendedor" Relationship="Self.FK_Vendedor_Garagem" FromRole="Garagem" ToRole="Vendedor" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Marca_Garagem" FromRole="Marca" ToRole="Garagem" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK_Modelo_Marca" FromRole="Marca" ToRole="Modelo" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modelo1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Modelo_Marca" FromRole="Modelo" ToRole="Marca" />
+          <NavigationProperty Name="Veiculo" Relationship="Self.FK_Veiculo_Modelo" FromRole="Modelo" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Leilao" Type="Byte" Nullable="false" />
+          <Property Name="Km" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Situacao" Type="Int32" Nullable="false" />
+          <Property Name="ValorCompra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ValorVenda" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Obs" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ModeloId" Type="Int32" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_Foto_Veiculo" FromRole="Veiculo" ToRole="Foto" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Veiculo_Garagem" FromRole="Veiculo" ToRole="Garagem" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK_Veiculo_Modelo" FromRole="Veiculo" ToRole="Modelo" />
+          <NavigationProperty Name="Venda" Relationship="Self.FK_Venda_Veiculo" FromRole="Veiculo" ToRole="Venda" />
+          <NavigationProperty Name="Adicional" Relationship="Self.VeiculoAdicional" FromRole="Veiculo" ToRole="Adicional" />
+        </EntityType>
+        <EntityType Name="Venda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Valor" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FormaPgto" Type="Int32" Nullable="false" />
+          <Property Name="VeiculoId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Obs" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Venda_Cliente" FromRole="Venda" ToRole="Cliente" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Venda_Garagem" FromRole="Venda" ToRole="Garagem" />
+          <NavigationProperty Name="Veiculo" Relationship="Self.FK_Venda_Veiculo" FromRole="Venda" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Vendedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendedor1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" Nullable="false" />
+          <Property Name="Comissao" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Acesso" Relationship="Self.FK_Acesso_Vendedor" FromRole="Vendedor" ToRole="Acesso" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Vendedor" FromRole="Vendedor" ToRole="Cliente" />
+          <NavigationProperty Name="Garagem" Relationship="Self.FK_Vendedor_Garagem" FromRole="Vendedor" ToRole="Garagem" />
+        </EntityType>
+        <Association Name="FK_Acesso_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acesso_Vendedor">
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="1" />
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adicional_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Adicional" Type="Self.Adicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adicional">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Vendedor">
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foto_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Foto" Type="Self.Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Foto">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foto_Veiculo">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="Foto" Type="Self.Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Foto">
+              <PropertyRef Name="VeiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Marca">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendedor_Garagem">
+          <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendedor">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modelo_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Modelo">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Veiculo">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venda">
+              <PropertyRef Name="VeiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VeiculoAdicional">
+          <End Role="Adicional" Type="Self.Adicional" Multiplicity="*" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="db_garagemEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Acesso" EntityType="Self.Acesso" />
+          <EntitySet Name="Adicional" EntityType="Self.Adicional" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" />
+          <EntitySet Name="Garagem" EntityType="Self.Garagem" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" />
+          <EntitySet Name="Veiculo" EntityType="Self.Veiculo" />
+          <EntitySet Name="Venda" EntityType="Self.Venda" />
+          <EntitySet Name="Vendedor" EntityType="Self.Vendedor" />
+          <AssociationSet Name="FK_Acesso_Garagem" Association="Self.FK_Acesso_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Acesso" EntitySet="Acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acesso_Vendedor" Association="Self.FK_Acesso_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Acesso" EntitySet="Acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adicional_Garagem" Association="Self.FK_Adicional_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Adicional" EntitySet="Adicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Garagem" Association="Self.FK_Cliente_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Vendedor" Association="Self.FK_Cliente_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Cliente" Association="Self.FK_Venda_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foto_Garagem" Association="Self.FK_Foto_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Foto" EntitySet="Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foto_Veiculo" Association="Self.FK_Foto_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Foto" EntitySet="Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca_Garagem" Association="Self.FK_Marca_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Marca" EntitySet="Marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Garagem" Association="Self.FK_Veiculo_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Garagem" Association="Self.FK_Venda_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendedor_Garagem" Association="Self.FK_Vendedor_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Vendedor" EntitySet="Vendedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Marca" Association="Self.FK_Modelo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Modelo" Association="Self.FK_Veiculo_Modelo">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Veiculo" Association="Self.FK_Venda_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <AssociationSet Name="VeiculoAdicional" Association="Self.VeiculoAdicional">
+            <End Role="Adicional" EntitySet="Adicional" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_garagemModelStoreContainer" CdmEntityContainer="db_garagemEntities">
+          <EntitySetMapping Name="Acesso">
+            <EntityTypeMapping TypeName="db_garagem.Acesso">
+              <MappingFragment StoreEntitySet="Acesso">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adicional">
+            <EntityTypeMapping TypeName="db_garagem.Adicional">
+              <MappingFragment StoreEntitySet="Adicional">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="db_garagem.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Foto">
+            <EntityTypeMapping TypeName="db_garagem.Foto">
+              <MappingFragment StoreEntitySet="Foto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Foto1" ColumnName="Foto" />
+                <ScalarProperty Name="VeiculoId" ColumnName="VeiculoId" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Garagem">
+            <EntityTypeMapping TypeName="db_garagem.Garagem">
+              <MappingFragment StoreEntitySet="Garagem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="db_garagem.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Marca1" ColumnName="Marca" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo">
+            <EntityTypeMapping TypeName="db_garagem.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Modelo1" ColumnName="Modelo" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veiculo">
+            <EntityTypeMapping TypeName="db_garagem.Veiculo">
+              <MappingFragment StoreEntitySet="Veiculo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Leilao" ColumnName="Leilao" />
+                <ScalarProperty Name="Km" ColumnName="Km" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="ValorCompra" ColumnName="ValorCompra" />
+                <ScalarProperty Name="ValorVenda" ColumnName="ValorVenda" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venda">
+            <EntityTypeMapping TypeName="db_garagem.Venda">
+              <MappingFragment StoreEntitySet="Venda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="FormaPgto" ColumnName="FormaPgto" />
+                <ScalarProperty Name="VeiculoId" ColumnName="VeiculoId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedor">
+            <EntityTypeMapping TypeName="db_garagem.Vendedor">
+              <MappingFragment StoreEntitySet="Vendedor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Vendedor1" ColumnName="Vendedor" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+                <ScalarProperty Name="Comissao" ColumnName="Comissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="VeiculoAdicional" TypeName="db_garagem.VeiculoAdicional" StoreEntitySet="VeiculoAdicional">
+            <EndProperty Name="Adicional">
+              <ScalarProperty Name="Id" ColumnName="AdicionalId" />
+            </EndProperty>
+            <EndProperty Name="Veiculo">
+              <ScalarProperty Name="Id" ColumnName="VeiculoId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

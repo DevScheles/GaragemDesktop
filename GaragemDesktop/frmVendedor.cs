@@ -110,6 +110,12 @@ namespace GaragemDesktop
                 flag = false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtComissao.Text))
+            {
+                campos += lblComissao.Text + "\n";
+                flag = false;
+            }
+
             if (!flag)
             {
                 Util.ExibirMsg(Util.TipoMsg.Atencao, campos);
