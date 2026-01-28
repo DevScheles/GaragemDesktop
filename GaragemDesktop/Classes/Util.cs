@@ -20,7 +20,8 @@ namespace GaragemDesktop.Classes
         {
             Erro,
             Atencao,
-            Informativo
+            Informativo,
+            ConfirmacaoExclusao
             
         }
 
@@ -30,8 +31,10 @@ namespace GaragemDesktop.Classes
             Edicao
         }
 
-        public static void ExibirMsg(TipoMsg tipo, string campos = "")
+        public static bool ExibirMsg(TipoMsg tipo, string campos = "")
         {
+            bool ret = true;
+
             switch (tipo)
             {
                 case TipoMsg.Erro:
@@ -43,9 +46,17 @@ namespace GaragemDesktop.Classes
                 case TipoMsg.Informativo: 
                     MessageBox.Show("Ação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+                case TipoMsg.ConfirmacaoExclusao: 
+                  if ( MessageBox.Show("Deseja confirmar a exclusão do registro:" + campos, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        ret = false;
+                    }
+                    break;
                 default:
                     break;
             }
+
+            return ret;
 
         }
 
@@ -66,6 +77,7 @@ namespace GaragemDesktop.Classes
                     alterar.Enabled = false;
                     excluir.Enabled = false;
 
+                    adicionar.BackColor = Color.FromArgb(0, 191, 99);
                     alterar.BackColor = Color.Gray;
                     excluir.BackColor = Color.Gray;
 
