@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DAO;
+using DAO.VO;
+using GaragemDesktop.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GaragemDesktop
 {
@@ -18,7 +22,7 @@ namespace GaragemDesktop
        
         }
 
-
+        #region Eventos
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmRegistroMarcas().ShowDialog();
@@ -56,11 +60,40 @@ namespace GaragemDesktop
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-        menuStrip1.Renderer = new MaroonMenuRenderer();
+            menuStrip1.Renderer = new MaroonMenuRenderer();
             menuStrip1.BackColor = Color.FromArgb(30, 30, 30);
+            Util.ConfigurarGrid(grdResultado);
+
+          
+            Consultar();
+
         }
 
+        private void pnlCardVeiculos_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGaragemAberta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adicionaisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmAdicionais().ShowDialog();
+        }
+
+        private void suvirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmSubirOnline().ShowDialog();
+        }
+        #endregion
 
 
         private void EstilizarSubItem(ToolStripMenuItem sub)
@@ -98,25 +131,17 @@ namespace GaragemDesktop
             };
         }
 
-        private void pnlCardVeiculos_Paint(object sender, PaintEventArgs e)
+        private void Consultar()
         {
+            ModeloDAO objDAO = new ModeloDAO();
+            List<ModeloVO> lstModelos = objDAO.ConsultarModelo(Util.CodigoLogado);
+            grdResultado.DataSource = lstModelos;
+            grdResultado.Columns["ObjEditar"].Visible = false;
+
 
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void lblGaragemAberta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adicionaisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new frmAdicionais().ShowDialog();
-        }
     }
 }
 

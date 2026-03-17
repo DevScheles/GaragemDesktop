@@ -41,9 +41,12 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.picGravarOffline = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGravarOffline)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBemVindo
@@ -206,12 +209,38 @@
             this.pictureBox3.TabIndex = 1021;
             this.pictureBox3.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(1008, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(139, 25);
+            this.label5.TabIndex = 1130;
+            this.label5.Text = "GRAVAR OFFLINE";
+            // 
+            // picGravarOffline
+            // 
+            this.picGravarOffline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picGravarOffline.Image = ((System.Drawing.Image)(resources.GetObject("picGravarOffline.Image")));
+            this.picGravarOffline.Location = new System.Drawing.Point(1130, 45);
+            this.picGravarOffline.Name = "picGravarOffline";
+            this.picGravarOffline.Size = new System.Drawing.Size(118, 63);
+            this.picGravarOffline.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGravarOffline.TabIndex = 1129;
+            this.picGravarOffline.TabStop = false;
+            this.picGravarOffline.Click += new System.EventHandler(this.picGravarOffline_Click);
+            // 
             // frmRegistroMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1337, 754);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.picGravarOffline);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnExcluir);
@@ -232,6 +261,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGravarOffline)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +281,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox picGravarOffline;
     }
 }

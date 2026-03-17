@@ -22,9 +22,11 @@ namespace DAO
         public int ClientId { get; set; }
         public string Obs { get; set; }
         public int GaragemId { get; set; }
+        public int VendedorId { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Garagem Garagem { get; set; }
         public virtual Veiculo Veiculo { get; set; }
+        public virtual Vendedor Vendedor { get; set; }
     }
 }

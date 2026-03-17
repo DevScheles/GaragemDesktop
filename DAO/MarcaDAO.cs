@@ -13,7 +13,8 @@ namespace DAO
         {
             
 
-            List<Marca> lstMarcas = objBd.Marca.Where(m => m.GaragemId == codLogado).ToList();
+            List<Marca> lstMarcas = objBd.Marca.AsNoTracking()
+                                   .Where(m => m.GaragemId == codLogado).ToList();
             //Select from marca where id = codLogado
 
             return lstMarcas;

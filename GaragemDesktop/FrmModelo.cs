@@ -1,4 +1,6 @@
-﻿using GaragemDesktop.Classes;
+﻿using DAO;
+using DAO.VO;
+using GaragemDesktop.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,8 @@ namespace GaragemDesktop
 {
     public partial class FrmModelo : Form
     {
+        int codigoRegistro = 0;
+        string informacao = string.Empty;
         public FrmModelo()
         {
             InitializeComponent();
@@ -25,6 +29,9 @@ namespace GaragemDesktop
             // Aqui você acessa a imagem que colocou no Resources
             picGravarOffline.Image = Properties.Resources.button_desligado; // imagem OFF
             picGravarOffline.Tag = "off"; // estado inicial
+            Util.ConfigurarCombo(cbSelecioneMarca, "Marca", "Id");
+            CarregarMarcas();
+            Consultar();
         }
 
 
@@ -48,33 +55,66 @@ namespace GaragemDesktop
         #region Eventos
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            ValidarCampos();
+            if (ValidarCampos())
+            {
+                Cadastrar();
+                LimparCampos();
+                Consultar();
+                Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+            }
+           
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-
+            if (ValidarCampos())
+            {
+                Alterar();
+                Consultar();
+                Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (Util.ExibirMsg(Util.TipoMsg.ConfirmacaoExclusao, txtNome.Text))
+            {
+                Excluir();
+                Consultar();
+                Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+            }
 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimparCampos();
+            Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
         }
 
         private void grdResultado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (grdResultado.RowCount > 0)
+            {
+                ModeloVO objLinhaClicada = (ModeloVO)grdResultado.CurrentRow.DataBoundItem;
 
+                txtNome.Text = objLinhaClicada.ObjEditar.Modelo1;
+                cbSelecioneMarca.SelectedValue = objLinhaClicada.ObjEditar.MarcaId;
+
+
+                codigoRegistro = objLinhaClicada.ObjEditar.Id;
+                informacao = objLinhaClicada.ObjEditar.Modelo1;
+
+                Util.ConfigurarEstadoTela(Util.EstadoTela.Edicao, btnAdicionar, btnAlterar, btnExcluir);
+            }
         }
 
         #endregion
 
 
         #region Métodos
+
+       
 
         private bool ValidarCampos()
         {
@@ -87,7 +127,7 @@ namespace GaragemDesktop
                 flag = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtModelo.Text))
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 campos += lblNomeModelo.Text;
                 flag = false;
@@ -104,10 +144,87 @@ namespace GaragemDesktop
 
         private void LimparCampos()
         {
-            txtModelo.Clear();
+            cbSelecioneMarca.SelectedIndex = -1;
+            txtNome.Clear();
         }
 
+        private void CarregarMarcas()
+        {
+            MarcaDAO objDAO = new MarcaDAO();
+            List<Marca> lstMarcas = objDAO.ConsultarMarcas(Util.CodigoLogado);
+            cbSelecioneMarca.DisplayMember = "Marca1";
+            cbSelecioneMarca.ValueMember = "Id";
+
+
+            cbSelecioneMarca.DataSource = lstMarcas;
+            cbSelecioneMarca.SelectedIndex = -1;
+        }
+
+        private void Cadastrar()
+        {
+            ModeloDAO objDAO = new ModeloDAO();
+            Modelo objModelo = new Modelo();
+
+            try
+            {
+                objModelo.Modelo1 = txtNome.Text;
+                objModelo.MarcaId = (int)cbSelecioneMarca.SelectedValue;
+                objModelo.GaragemId = Util.CodigoLogado;
+
+                objDAO.CadastrarModelo(objModelo);
+                Util.ExibirMsg(Util.TipoMsg.Informativo);
+            }
+            catch 
+            {
+                Util.ExibirMsg(Util.TipoMsg.Erro);
+            }
+           
+        }
+
+        private void Alterar()
+        {
+            ModeloDAO objDAO = new ModeloDAO();
+            Modelo objModelo = new Modelo();
+
+            objModelo.Modelo1 = txtNome.Text;
+            objModelo.MarcaId = (int)cbSelecioneMarca.SelectedValue;
+            objModelo.Id = codigoRegistro;
+
+            objDAO.AlterarModelo(objModelo);
+
+            try
+            {
+                Util.ExibirMsg(Util.TipoMsg.Informativo);
+                LimparCampos();
+            }
+            catch
+            {
+
+
+            }
+        }
+
+
+        private void Excluir()
+        {
+            ModeloDAO objDAO = new ModeloDAO();
+            objDAO.ExcluirModelo(codigoRegistro);
+        }
+
+        private void Consultar()
+        {
+            ModeloDAO objDAO = new ModeloDAO();
+            List<ModeloVO> lstModelos = objDAO.ConsultarModelo(Util.CodigoLogado);
+            grdResultado.DataSource = lstModelos;
+            grdResultado.Columns["ObjEditar"].Visible = false;
+
+           
+        }
+
+
         #endregion
+
+       
     }
 }
 

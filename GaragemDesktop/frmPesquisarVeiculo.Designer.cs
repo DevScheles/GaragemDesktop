@@ -32,17 +32,14 @@
             this.grdResultado = new System.Windows.Forms.DataGridView();
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbSelecioneModelo = new System.Windows.Forms.ComboBox();
-            this.cbSelecioneMarca = new System.Windows.Forms.ComboBox();
+            this.cbModelo = new System.Windows.Forms.ComboBox();
+            this.cbMarca = new System.Windows.Forms.ComboBox();
             this.lblSelecioneModelo = new System.Windows.Forms.Label();
             this.lblSelecioneMarca = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // grdResultado
@@ -82,25 +79,27 @@
             this.label1.TabIndex = 1032;
             this.label1.Text = "GERENCIE SUAS MARCAS COM RAPIDEZ";
             // 
-            // cbSelecioneModelo
+            // cbModelo
             // 
-            this.cbSelecioneModelo.BackColor = System.Drawing.Color.Maroon;
-            this.cbSelecioneModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.cbSelecioneModelo.FormattingEnabled = true;
-            this.cbSelecioneModelo.Location = new System.Drawing.Point(1016, 165);
-            this.cbSelecioneModelo.Name = "cbSelecioneModelo";
-            this.cbSelecioneModelo.Size = new System.Drawing.Size(227, 37);
-            this.cbSelecioneModelo.TabIndex = 1095;
+            this.cbModelo.BackColor = System.Drawing.Color.Maroon;
+            this.cbModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbModelo.FormattingEnabled = true;
+            this.cbModelo.Location = new System.Drawing.Point(1016, 187);
+            this.cbModelo.Name = "cbModelo";
+            this.cbModelo.Size = new System.Drawing.Size(227, 37);
+            this.cbModelo.TabIndex = 1095;
+            this.cbModelo.SelectedIndexChanged += new System.EventHandler(this.cbModelo_SelectedIndexChanged);
             // 
-            // cbSelecioneMarca
+            // cbMarca
             // 
-            this.cbSelecioneMarca.BackColor = System.Drawing.Color.Maroon;
-            this.cbSelecioneMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.cbSelecioneMarca.FormattingEnabled = true;
-            this.cbSelecioneMarca.Location = new System.Drawing.Point(519, 166);
-            this.cbSelecioneMarca.Name = "cbSelecioneMarca";
-            this.cbSelecioneMarca.Size = new System.Drawing.Size(227, 37);
-            this.cbSelecioneMarca.TabIndex = 1096;
+            this.cbMarca.BackColor = System.Drawing.Color.Maroon;
+            this.cbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbMarca.FormattingEnabled = true;
+            this.cbMarca.Location = new System.Drawing.Point(519, 188);
+            this.cbMarca.Name = "cbMarca";
+            this.cbMarca.Size = new System.Drawing.Size(227, 37);
+            this.cbMarca.TabIndex = 1096;
+            this.cbMarca.SelectedIndexChanged += new System.EventHandler(this.cbMarca_SelectedIndexChanged);
             // 
             // lblSelecioneModelo
             // 
@@ -108,11 +107,12 @@
             this.lblSelecioneModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblSelecioneModelo.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelecioneModelo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblSelecioneModelo.Location = new System.Drawing.Point(779, 171);
+            this.lblSelecioneModelo.Location = new System.Drawing.Point(779, 193);
             this.lblSelecioneModelo.Name = "lblSelecioneModelo";
             this.lblSelecioneModelo.Size = new System.Drawing.Size(208, 28);
             this.lblSelecioneModelo.TabIndex = 1099;
             this.lblSelecioneModelo.Text = "SELECIONE O MODELO:";
+            this.lblSelecioneModelo.Click += new System.EventHandler(this.lblSelecioneModelo_Click);
             // 
             // lblSelecioneMarca
             // 
@@ -120,11 +120,12 @@
             this.lblSelecioneMarca.BackColor = System.Drawing.Color.Transparent;
             this.lblSelecioneMarca.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelecioneMarca.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblSelecioneMarca.Location = new System.Drawing.Point(287, 171);
+            this.lblSelecioneMarca.Location = new System.Drawing.Point(287, 193);
             this.lblSelecioneMarca.Name = "lblSelecioneMarca";
             this.lblSelecioneMarca.Size = new System.Drawing.Size(198, 28);
             this.lblSelecioneMarca.TabIndex = 1100;
             this.lblSelecioneMarca.Text = "SELECIONE A MARCA:";
+            this.lblSelecioneMarca.Click += new System.EventHandler(this.lblSelecioneMarca_Click);
             // 
             // label5
             // 
@@ -153,43 +154,14 @@
             this.pictureBox2.TabIndex = 1030;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Navy;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(685, 250);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(36, 45);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 1122;
-            this.pictureBox3.TabStop = false;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.BackColor = System.Drawing.Color.Navy;
-            this.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPesquisar.FlatAppearance.BorderSize = 0;
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnPesquisar.ForeColor = System.Drawing.Color.White;
-            this.btnPesquisar.Location = new System.Drawing.Point(684, 250);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(180, 45);
-            this.btnPesquisar.TabIndex = 1123;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = false;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
             // frmPesquisarVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1419, 807);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.btnPesquisar);
-            this.Controls.Add(this.cbSelecioneModelo);
-            this.Controls.Add(this.cbSelecioneMarca);
+            this.Controls.Add(this.cbModelo);
+            this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.lblSelecioneModelo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblSelecioneMarca);
@@ -202,7 +174,6 @@
             this.Load += new System.EventHandler(this.frmPesquisarVeiculo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,12 +185,10 @@
         private System.Windows.Forms.Label lblBemVindo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ComboBox cbSelecioneModelo;
-        private System.Windows.Forms.ComboBox cbSelecioneMarca;
+        private System.Windows.Forms.ComboBox cbModelo;
+        private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.Label lblSelecioneModelo;
         private System.Windows.Forms.Label lblSelecioneMarca;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnPesquisar;
     }
 }

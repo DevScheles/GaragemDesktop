@@ -3,6 +3,8 @@ using System;
 using System.Windows.Forms;
 using DAO;
 using System.Collections.Generic;
+using System.Xml;
+using System.IO;
 
 namespace GaragemDesktop
 {
@@ -16,10 +18,14 @@ namespace GaragemDesktop
         }
 
         int codigoRegistro = 0;
+        string Informação = string.Empty;
 
         #region Eventos
         private void frmRegistroMarcas_Load(object sender, EventArgs e)
         {
+            // Aqui você acessa a imagem que colocou no Resources
+            picGravarOffline.Image = Properties.Resources.button_desligado; // imagem OFF
+            picGravarOffline.Tag = "off"; // estado inicial
             Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
             Consultar();
         }
@@ -28,8 +34,39 @@ namespace GaragemDesktop
         {
             if (ValidarCampos())
             {
-                Cadastrar();
-                Consultar();
+
+                try
+                {
+                    if (picGravarOffline.Tag.ToString() == "on")
+                    {
+                        // Ligar
+                        picGravarOffline.Image = Properties.Resources.button_ligado;
+                        picGravarOffline.Tag = "on";
+                        CadastrarOff();
+                        LimparCampos();
+                        Util.ExibirMsg(Util.TipoMsg.Informativo);
+
+                    }
+
+
+                    else
+                    {
+                        // Desligar
+                        picGravarOffline.Image = Properties.Resources.button_desligado;
+                        picGravarOffline.Tag = "off";
+                        Cadastrar();
+                    }
+                }
+
+
+
+                catch (Exception)
+                {
+
+                    Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+                }
+
+
             }
         }
 
@@ -49,23 +86,22 @@ namespace GaragemDesktop
             {
                 Excluir();
                 Consultar();
-                Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
             }
 
-            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimparCampos();
-            Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+
         }
 
         private void grdResultado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (grdResultado.RowCount > 0)
             {
-                Marca objLinhaClicada = (Marca) grdResultado.CurrentRow.DataBoundItem;
+                Marca objLinhaClicada = (Marca)grdResultado.CurrentRow.DataBoundItem;
 
                 txtNome.Text = objLinhaClicada.Marca1;
                 codigoRegistro = objLinhaClicada.Id;
@@ -76,6 +112,40 @@ namespace GaragemDesktop
         #endregion
 
         #region Metódos
+
+
+        private void CadastrarOff()
+        {
+            XmlDocument xml = new XmlDocument();
+            string nomeArquivo = Util.DevolverNomeArquivo(Util.ArquivoTela.Marca);
+
+            if (!File.Exists(nomeArquivo))
+            {
+                //Cria o XML com a base
+                XmlElement noMarca = xml.CreateElement("marca");
+                xml.AppendChild(noMarca);
+            }
+            else
+            {
+                xml.Load(nomeArquivo);
+            }
+
+            XmlElement xmlItem = xml.CreateElement("item");
+            XmlElement xmlNome = xml.CreateElement("nome");
+            xmlNome.InnerText = txtNome.Text;
+            xmlItem.AppendChild(xmlNome);
+
+            XmlElement xmlCodGaragem = xml.CreateElement("idgaragem");
+            xmlCodGaragem.InnerText = Util.CodigoLogado.ToString();
+            xmlItem.AppendChild(xmlCodGaragem);
+
+            //Recupera o no raiz
+            XmlNode xmlRaiz = xml.SelectSingleNode("marca");
+            xmlRaiz.AppendChild(xmlItem);
+            xml.Save(nomeArquivo);
+
+
+        }
 
         private void Excluir()
         {
@@ -113,10 +183,10 @@ namespace GaragemDesktop
                 Util.ExibirMsg(Util.TipoMsg.Informativo);
                 LimparCampos();
             }
-            catch 
+            catch
             {
+                Util.ExibirMsg(Util.TipoMsg.Erro);
 
-               
             }
         }
 
@@ -185,8 +255,27 @@ namespace GaragemDesktop
         {
             txtNome.Clear();
             txtNome.Focus();
+            Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
         }
 
+
         #endregion
+
+
+        private void picGravarOffline_Click(object sender, EventArgs e)
+        {
+            if (picGravarOffline.Tag.ToString() == "off")
+            {
+                // Ligar
+                picGravarOffline.Image = Properties.Resources.button_ligado;
+                picGravarOffline.Tag = "on";
+            }
+            else
+            {
+                // Desligar
+                picGravarOffline.Image = Properties.Resources.button_desligado;
+                picGravarOffline.Tag = "off";
+            }
+        }
     }
 }

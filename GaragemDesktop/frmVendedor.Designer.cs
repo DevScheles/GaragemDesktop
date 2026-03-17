@@ -29,55 +29,46 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVendedor));
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblAtivo = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.grdResultado = new System.Windows.Forms.DataGridView();
             this.lblGerenciarVendedor = new System.Windows.Forms.Label();
             this.lblNomeVendedor = new System.Windows.Forms.Label();
             this.lblTelefone = new System.Windows.Forms.Label();
-            this.lblCpf = new System.Windows.Forms.Label();
+            this.lblCPF = new System.Windows.Forms.Label();
             this.lblEndereco = new System.Windows.Forms.Label();
             this.lblFiltrarPeloNome = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picVendedorAtivo = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtNomeVendedor = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNomeFiltro = new System.Windows.Forms.TextBox();
             this.txtComissao = new System.Windows.Forms.TextBox();
             this.lblComissao = new System.Windows.Forms.Label();
+            this.chkStatus = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVendedorAtivo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
-            // label5
+            // lblAtivo
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(1078, 284);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 21);
-            this.label5.TabIndex = 1071;
-            this.label5.Text = "ATIVO";
+            this.lblAtivo.AutoSize = true;
+            this.lblAtivo.BackColor = System.Drawing.Color.Transparent;
+            this.lblAtivo.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtivo.ForeColor = System.Drawing.Color.White;
+            this.lblAtivo.Location = new System.Drawing.Point(1084, 282);
+            this.lblAtivo.Name = "lblAtivo";
+            this.lblAtivo.Size = new System.Drawing.Size(49, 21);
+            this.lblAtivo.TabIndex = 1071;
+            this.lblAtivo.Text = "ATIVO";
             // 
             // lblEmail
             // 
@@ -95,14 +86,14 @@
             this.grdResultado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdResultado.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.grdResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdResultado.Location = new System.Drawing.Point(406, 508);
+            this.grdResultado.Location = new System.Drawing.Point(418, 508);
             this.grdResultado.MultiSelect = false;
             this.grdResultado.Name = "grdResultado";
             this.grdResultado.ReadOnly = true;
             this.grdResultado.RowHeadersWidth = 51;
             this.grdResultado.RowTemplate.Height = 24;
             this.grdResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdResultado.Size = new System.Drawing.Size(1045, 274);
+            this.grdResultado.Size = new System.Drawing.Size(1033, 274);
             this.grdResultado.TabIndex = 1066;
             this.grdResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdResultado_CellClick);
             // 
@@ -140,16 +131,16 @@
             this.lblTelefone.TabIndex = 1067;
             this.lblTelefone.Text = "TELEFONE:";
             // 
-            // lblCpf
+            // lblCPF
             // 
-            this.lblCpf.AutoSize = true;
-            this.lblCpf.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCpf.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblCpf.Location = new System.Drawing.Point(860, 164);
-            this.lblCpf.Name = "lblCpf";
-            this.lblCpf.Size = new System.Drawing.Size(51, 28);
-            this.lblCpf.TabIndex = 1067;
-            this.lblCpf.Text = "CPF:";
+            this.lblCPF.AutoSize = true;
+            this.lblCPF.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPF.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblCPF.Location = new System.Drawing.Point(860, 164);
+            this.lblCPF.Name = "lblCPF";
+            this.lblCPF.Size = new System.Drawing.Size(51, 28);
+            this.lblCPF.TabIndex = 1067;
+            this.lblCPF.Text = "CPF:";
             // 
             // lblEndereco
             // 
@@ -183,7 +174,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(-5, 509);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(424, 293);
+            this.pictureBox1.Size = new System.Drawing.Size(424, 299);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1075;
             this.pictureBox1.TabStop = false;
@@ -198,33 +189,10 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(-23, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(363, 284);
+            this.pictureBox2.Size = new System.Drawing.Size(363, 290);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1072;
             this.pictureBox2.TabStop = false;
-            // 
-            // picVendedorAtivo
-            // 
-            this.picVendedorAtivo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picVendedorAtivo.Image = ((System.Drawing.Image)(resources.GetObject("picVendedorAtivo.Image")));
-            this.picVendedorAtivo.Location = new System.Drawing.Point(1101, 267);
-            this.picVendedorAtivo.Name = "picVendedorAtivo";
-            this.picVendedorAtivo.Size = new System.Drawing.Size(114, 57);
-            this.picVendedorAtivo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picVendedorAtivo.TabIndex = 1070;
-            this.picVendedorAtivo.TabStop = false;
-            this.picVendedorAtivo.Click += new System.EventHandler(this.picVendedorAtivo_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.DarkRed;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(754, 364);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(36, 47);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 1121;
-            this.pictureBox3.TabStop = false;
             // 
             // btnExcluir
             // 
@@ -242,17 +210,6 @@
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(515, 364);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(36, 47);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 1120;
-            this.pictureBox4.TabStop = false;
-            // 
             // btnAlterar
             // 
             this.btnAlterar.BackColor = System.Drawing.Color.RoyalBlue;
@@ -268,17 +225,6 @@
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(269, 364);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(37, 47);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 1119;
-            this.pictureBox9.TabStop = false;
             // 
             // btnAdicionar
             // 
@@ -296,17 +242,6 @@
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(1004, 364);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(34, 45);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 1122;
-            this.pictureBox10.TabStop = false;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
@@ -323,15 +258,15 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtNomeVendedor
+            // txtNome
             // 
-            this.txtNomeVendedor.BackColor = System.Drawing.Color.Maroon;
-            this.txtNomeVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeVendedor.ForeColor = System.Drawing.Color.White;
-            this.txtNomeVendedor.Location = new System.Drawing.Point(484, 96);
-            this.txtNomeVendedor.Name = "txtNomeVendedor";
-            this.txtNomeVendedor.Size = new System.Drawing.Size(326, 36);
-            this.txtNomeVendedor.TabIndex = 1;
+            this.txtNome.BackColor = System.Drawing.Color.Maroon;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.ForeColor = System.Drawing.Color.White;
+            this.txtNome.Location = new System.Drawing.Point(484, 96);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(326, 36);
+            this.txtNome.TabIndex = 1;
             // 
             // txtEmail
             // 
@@ -363,6 +298,9 @@
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(227, 36);
             this.txtCpf.TabIndex = 4;
+            this.txtCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCpf.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtCpf_MaskInputRejected);
+            this.txtCpf.Leave += new System.EventHandler(this.txtCpf_Leave);
             // 
             // txtTelefone
             // 
@@ -374,16 +312,18 @@
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(227, 36);
             this.txtTelefone.TabIndex = 2;
+            this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // textBox4
+            // txtNomeFiltro
             // 
-            this.textBox4.BackColor = System.Drawing.Color.Maroon;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(587, 440);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(576, 36);
-            this.textBox4.TabIndex = 10;
+            this.txtNomeFiltro.BackColor = System.Drawing.Color.Maroon;
+            this.txtNomeFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeFiltro.ForeColor = System.Drawing.Color.White;
+            this.txtNomeFiltro.Location = new System.Drawing.Point(587, 440);
+            this.txtNomeFiltro.Name = "txtNomeFiltro";
+            this.txtNomeFiltro.Size = new System.Drawing.Size(576, 36);
+            this.txtNomeFiltro.TabIndex = 10;
+            this.txtNomeFiltro.TextChanged += new System.EventHandler(this.txtNomeFiltro_TextChanged);
             // 
             // txtComissao
             // 
@@ -406,32 +346,39 @@
             this.lblComissao.TabIndex = 1124;
             this.lblComissao.Text = "COMISSÃO:";
             // 
+            // chkStatus
+            // 
+            this.chkStatus.AutoSize = true;
+            this.chkStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus.Location = new System.Drawing.Point(1145, 284);
+            this.chkStatus.Name = "chkStatus";
+            this.chkStatus.Size = new System.Drawing.Size(18, 17);
+            this.chkStatus.TabIndex = 1126;
+            this.chkStatus.UseVisualStyleBackColor = true;
+            // 
             // frmVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.ClientSize = new System.Drawing.Size(1443, 776);
+            this.ClientSize = new System.Drawing.Size(1443, 782);
+            this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.txtComissao);
             this.Controls.Add(this.lblComissao);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtNomeFiltro);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtNomeVendedor);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.btnAlterar);
-            this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblFiltrarPeloNome);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblCpf);
+            this.Controls.Add(this.lblAtivo);
+            this.Controls.Add(this.lblCPF);
             this.Controls.Add(this.lblNomeVendedor);
             this.Controls.Add(this.lblTelefone);
             this.Controls.Add(this.lblEndereco);
@@ -439,18 +386,12 @@
             this.Controls.Add(this.grdResultado);
             this.Controls.Add(this.lblGerenciarVendedor);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.picVendedorAtivo);
             this.Name = "frmVendedor";
             this.Text = "frmVendedor";
             this.Load += new System.EventHandler(this.frmVendedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVendedorAtivo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,33 +399,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox picVendedorAtivo;
+        private System.Windows.Forms.Label lblAtivo;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.DataGridView grdResultado;
         private System.Windows.Forms.Label lblGerenciarVendedor;
         private System.Windows.Forms.Label lblNomeVendedor;
         private System.Windows.Forms.Label lblTelefone;
-        private System.Windows.Forms.Label lblCpf;
+        private System.Windows.Forms.Label lblCPF;
         private System.Windows.Forms.Label lblEndereco;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblFiltrarPeloNome;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtNomeVendedor;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNomeFiltro;
         private System.Windows.Forms.TextBox txtComissao;
         private System.Windows.Forms.Label lblComissao;
+        private System.Windows.Forms.CheckBox chkStatus;
     }
 }

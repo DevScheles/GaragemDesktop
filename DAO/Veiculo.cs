@@ -18,8 +18,8 @@ namespace DAO
         public Veiculo()
         {
             this.Foto = new HashSet<Foto>();
-            this.Venda = new HashSet<Venda>();
             this.Adicional = new HashSet<Adicional>();
+            this.Venda = new HashSet<Venda>();
         }
     
         public int Id { get; set; }
@@ -37,10 +37,10 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Foto> Foto { get; set; }
         public virtual Garagem Garagem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Adicional> Adicional { get; set; }
         public virtual Modelo Modelo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Adicional> Adicional { get; set; }
     }
 }

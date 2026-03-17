@@ -26,15 +26,15 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Acesso> Acesso { get; set; }
         public virtual DbSet<Adicional> Adicional { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Foto> Foto { get; set; }
         public virtual DbSet<Garagem> Garagem { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
-        public virtual DbSet<Modelo> Modelo { get; set; }
         public virtual DbSet<Veiculo> Veiculo { get; set; }
-        public virtual DbSet<Venda> Venda { get; set; }
         public virtual DbSet<Vendedor> Vendedor { get; set; }
+        public virtual DbSet<Modelo> Modelo { get; set; }
+        public virtual DbSet<Acesso> Acesso { get; set; }
+        public virtual DbSet<Venda> Venda { get; set; }
     }
 }

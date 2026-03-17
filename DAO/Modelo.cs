@@ -23,7 +23,9 @@ namespace DAO
         public int Id { get; set; }
         public string Modelo1 { get; set; }
         public int MarcaId { get; set; }
+        public int GaragemId { get; set; }
     
+        public virtual Garagem Garagem { get; set; }
         public virtual Marca Marca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Veiculo> Veiculo { get; set; }

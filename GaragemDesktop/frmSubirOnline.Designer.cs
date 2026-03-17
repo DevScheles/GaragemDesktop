@@ -37,17 +37,16 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cbSelecioneTela = new System.Windows.Forms.ComboBox();
             this.lblSelecioneTela = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnSubir = new System.Windows.Forms.Button();
             this.cleanRoundTextBox1 = new GaragemDesktop.CleanRoundTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // grdResultado
             // 
+            this.grdResultado.AllowUserToAddRows = false;
             this.grdResultado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdResultado.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.grdResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -125,10 +124,15 @@
             this.cbSelecioneTela.BackColor = System.Drawing.Color.Maroon;
             this.cbSelecioneTela.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.cbSelecioneTela.FormattingEnabled = true;
+            this.cbSelecioneTela.Items.AddRange(new object[] {
+            "Vendedor",
+            "Marca",
+            "Modelo"});
             this.cbSelecioneTela.Location = new System.Drawing.Point(687, 162);
             this.cbSelecioneTela.Name = "cbSelecioneTela";
             this.cbSelecioneTela.Size = new System.Drawing.Size(227, 37);
             this.cbSelecioneTela.TabIndex = 1101;
+            this.cbSelecioneTela.SelectedIndexChanged += new System.EventHandler(this.cbSelecioneTela_SelectedIndexChanged);
             // 
             // lblSelecioneTela
             // 
@@ -142,32 +146,21 @@
             this.lblSelecioneTela.TabIndex = 1103;
             this.lblSelecioneTela.Text = "SELECIONE A TELA:";
             // 
-            // pictureBox5
+            // btnSubir
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(630, 260);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(37, 47);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 1119;
-            this.pictureBox5.TabStop = false;
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
-            this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAdicionar.FlatAppearance.BorderSize = 0;
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(630, 260);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(180, 47);
-            this.btnAdicionar.TabIndex = 1123;
-            this.btnAdicionar.Text = "Subir";
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            this.btnSubir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnSubir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSubir.FlatAppearance.BorderSize = 0;
+            this.btnSubir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSubir.ForeColor = System.Drawing.Color.White;
+            this.btnSubir.Location = new System.Drawing.Point(630, 260);
+            this.btnSubir.Name = "btnSubir";
+            this.btnSubir.Size = new System.Drawing.Size(180, 47);
+            this.btnSubir.TabIndex = 1123;
+            this.btnSubir.Text = "Subir";
+            this.btnSubir.UseVisualStyleBackColor = false;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
             // cleanRoundTextBox1
             // 
@@ -189,8 +182,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1337, 754);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.btnSubir);
             this.Controls.Add(this.cbSelecioneTela);
             this.Controls.Add(this.lblSelecioneTela);
             this.Controls.Add(this.cleanRoundTextBox1);
@@ -206,7 +198,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,7 +214,6 @@
         private System.Windows.Forms.ComboBox cbSelecioneTela;
         private System.Windows.Forms.Label lblSelecioneTela;
         private CleanRoundTextBox cleanRoundTextBox1;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnSubir;
     }
 }

@@ -18,8 +18,8 @@ namespace DAO
         public string Login { get; set; }
         public string Senha { get; set; }
         public int Tipo { get; set; }
-        public int GaragemId { get; set; }
-        public int VendedorId { get; set; }
+        public Nullable<int> GaragemId { get; set; }
+        public Nullable<int> VendedorId { get; set; }
         public byte Status { get; set; }
     
         public virtual Garagem Garagem { get; set; }

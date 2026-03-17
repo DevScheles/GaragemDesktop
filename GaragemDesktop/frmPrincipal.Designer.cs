@@ -30,11 +30,13 @@
         {
             System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adicionaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.suvirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,12 +77,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblReceitaFaturada = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.grdVeiculosCadastrados = new System.Windows.Forms.DataGridView();
+            this.grdResultado = new System.Windows.Forms.DataGridView();
             this.picIcone = new System.Windows.Forms.PictureBox();
             this.lblGaragemAberta = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblVeiculosCadastrados = new System.Windows.Forms.Label();
-            this.adicionaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowCards.SuspendLayout();
@@ -94,7 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlCardFaturamento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVeiculosCadastrados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIcone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -115,7 +116,8 @@
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.marcasToolStripMenuItem,
             this.modelosToolStripMenuItem,
-            this.adicionaisToolStripMenuItem});
+            this.adicionaisToolStripMenuItem,
+            this.suvirToolStripMenuItem});
             this.cadastrosToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.cadastrosToolStripMenuItem.Image = global::GaragemDesktop.Properties.Resources.menu_Cadastros;
             this.cadastrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -146,6 +148,22 @@
             this.modelosToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.modelosToolStripMenuItem.Text = "Modelos";
             this.modelosToolStripMenuItem.Click += new System.EventHandler(this.modelosToolStripMenuItem_Click);
+            // 
+            // adicionaisToolStripMenuItem
+            // 
+            this.adicionaisToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.adicionaisToolStripMenuItem.Name = "adicionaisToolStripMenuItem";
+            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.adicionaisToolStripMenuItem.Text = "Adicionais";
+            this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
+            // 
+            // suvirToolStripMenuItem
+            // 
+            this.suvirToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.suvirToolStripMenuItem.Name = "suvirToolStripMenuItem";
+            this.suvirToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.suvirToolStripMenuItem.Text = "Subir Offline";
+            this.suvirToolStripMenuItem.Click += new System.EventHandler(this.suvirToolStripMenuItem_Click);
             // 
             // vendedorToolStripMenuItem
             // 
@@ -592,28 +610,28 @@
             this.panel1.Size = new System.Drawing.Size(229, 4);
             this.panel1.TabIndex = 2;
             // 
-            // grdVeiculosCadastrados
+            // grdResultado
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.grdVeiculosCadastrados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.grdVeiculosCadastrados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.grdVeiculosCadastrados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grdVeiculosCadastrados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grdVeiculosCadastrados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdVeiculosCadastrados.Location = new System.Drawing.Point(16, 259);
-            this.grdVeiculosCadastrados.Name = "grdVeiculosCadastrados";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdVeiculosCadastrados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.grdVeiculosCadastrados.RowHeadersWidth = 51;
-            this.grdVeiculosCadastrados.RowTemplate.Height = 24;
-            this.grdVeiculosCadastrados.Size = new System.Drawing.Size(979, 564);
-            this.grdVeiculosCadastrados.TabIndex = 3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.grdResultado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdResultado.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.grdResultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdResultado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grdResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdResultado.Location = new System.Drawing.Point(16, 259);
+            this.grdResultado.Name = "grdResultado";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdResultado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grdResultado.RowHeadersWidth = 51;
+            this.grdResultado.RowTemplate.Height = 24;
+            this.grdResultado.Size = new System.Drawing.Size(979, 564);
+            this.grdResultado.TabIndex = 3;
             // 
             // picIcone
             // 
@@ -659,14 +677,6 @@
             this.lblVeiculosCadastrados.TabIndex = 5;
             this.lblVeiculosCadastrados.Text = "Veículos Cadastrados:";
             // 
-            // adicionaisToolStripMenuItem
-            // 
-            this.adicionaisToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.adicionaisToolStripMenuItem.Name = "adicionaisToolStripMenuItem";
-            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.adicionaisToolStripMenuItem.Text = "Adicionais";
-            this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -677,7 +687,7 @@
             this.Controls.Add(this.lblGaragemAberta);
             this.Controls.Add(this.lblVeiculosCadastrados);
             this.Controls.Add(this.picIcone);
-            this.Controls.Add(this.grdVeiculosCadastrados);
+            this.Controls.Add(this.grdResultado);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowCards);
             this.Controls.Add(this.menuStrip1);
@@ -707,7 +717,7 @@
             this.pnlCardFaturamento.ResumeLayout(false);
             this.pnlCardFaturamento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVeiculosCadastrados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIcone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
@@ -759,12 +769,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblReceitaFaturada;
-        private System.Windows.Forms.DataGridView grdVeiculosCadastrados;
+        private System.Windows.Forms.DataGridView grdResultado;
         private System.Windows.Forms.PictureBox picIcone;
         private System.Windows.Forms.Label lblGaragemAberta;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lblVeiculosCadastrados;
         private System.Windows.Forms.Label lblCifrao;
         private System.Windows.Forms.ToolStripMenuItem adicionaisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem suvirToolStripMenuItem;
     }
 }
