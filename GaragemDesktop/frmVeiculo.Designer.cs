@@ -30,13 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVeiculo));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblSelecioneMarca = new System.Windows.Forms.Label();
             this.lblQuilometragem = new System.Windows.Forms.Label();
             this.grdAdicionais = new System.Windows.Forms.DataGridView();
             this.lblCadastrarVeiculo = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picVendedorAtivo = new System.Windows.Forms.PictureBox();
+            this.picGravarOffline = new System.Windows.Forms.PictureBox();
             this.lblFiltrarPeloNome = new System.Windows.Forms.Label();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.lblSelecioneModelo = new System.Windows.Forms.Label();
@@ -46,7 +45,7 @@
             this.lblSituacao = new System.Windows.Forms.Label();
             this.chkLeilao = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.picAnexarFotos = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtValorCompra = new System.Windows.Forms.TextBox();
             this.txtKm = new System.Windows.Forms.TextBox();
@@ -63,11 +62,12 @@
             this.lblAno = new System.Windows.Forms.Label();
             this.txtAno = new System.Windows.Forms.MaskedTextBox();
             this.txtPlaca = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAdicionais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVendedorAtivo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGravarOffline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnexarFotos)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -84,18 +84,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1101;
             this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(1271, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 21);
-            this.label5.TabIndex = 1097;
-            this.label5.Text = "ATIVO";
             // 
             // lblSelecioneMarca
             // 
@@ -134,7 +122,6 @@
             this.grdAdicionais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdAdicionais.Size = new System.Drawing.Size(658, 280);
             this.grdAdicionais.TabIndex = 1090;
-            this.grdAdicionais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdResultado_CellClick);
             // 
             // lblCadastrarVeiculo
             // 
@@ -157,21 +144,22 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(-11, 1);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(304, 264);
+            this.pictureBox2.Size = new System.Drawing.Size(286, 255);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1098;
             this.pictureBox2.TabStop = false;
             // 
-            // picVendedorAtivo
+            // picGravarOffline
             // 
-            this.picVendedorAtivo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picVendedorAtivo.Image = ((System.Drawing.Image)(resources.GetObject("picVendedorAtivo.Image")));
-            this.picVendedorAtivo.Location = new System.Drawing.Point(1294, 12);
-            this.picVendedorAtivo.Name = "picVendedorAtivo";
-            this.picVendedorAtivo.Size = new System.Drawing.Size(114, 57);
-            this.picVendedorAtivo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picVendedorAtivo.TabIndex = 1096;
-            this.picVendedorAtivo.TabStop = false;
+            this.picGravarOffline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picGravarOffline.Image = ((System.Drawing.Image)(resources.GetObject("picGravarOffline.Image")));
+            this.picGravarOffline.Location = new System.Drawing.Point(1294, 12);
+            this.picGravarOffline.Name = "picGravarOffline";
+            this.picGravarOffline.Size = new System.Drawing.Size(114, 57);
+            this.picGravarOffline.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGravarOffline.TabIndex = 1096;
+            this.picGravarOffline.TabStop = false;
+            this.picGravarOffline.Click += new System.EventHandler(this.picGravarOffline_Click);
             // 
             // lblFiltrarPeloNome
             // 
@@ -260,7 +248,7 @@
             this.chkLeilao.Location = new System.Drawing.Point(940, 362);
             this.chkLeilao.Name = "chkLeilao";
             this.chkLeilao.Size = new System.Drawing.Size(95, 32);
-            this.chkLeilao.TabIndex = 1107;
+            this.chkLeilao.TabIndex = 10;
             this.chkLeilao.Text = "LEILÃO";
             this.chkLeilao.UseVisualStyleBackColor = true;
             // 
@@ -276,20 +264,21 @@
             this.label3.TabIndex = 1108;
             this.label3.Text = "Para selecionar mais de uma linha CLIQUE NA LINHA selecionando o botão Ctrl";
             // 
-            // pictureBox4
+            // picAnexarFotos
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picAnexarFotos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1153, 486);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(152, 193);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 1101;
-            this.pictureBox4.TabStop = false;
+            this.picAnexarFotos.BackColor = System.Drawing.Color.Transparent;
+            this.picAnexarFotos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picAnexarFotos.Image = ((System.Drawing.Image)(resources.GetObject("picAnexarFotos.Image")));
+            this.picAnexarFotos.Location = new System.Drawing.Point(1153, 486);
+            this.picAnexarFotos.Name = "picAnexarFotos";
+            this.picAnexarFotos.Size = new System.Drawing.Size(152, 193);
+            this.picAnexarFotos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAnexarFotos.TabIndex = 1101;
+            this.picAnexarFotos.TabStop = false;
+            this.picAnexarFotos.Click += new System.EventHandler(this.picAnexarFotos_Click);
             // 
             // label10
             // 
@@ -311,7 +300,7 @@
             this.txtValorCompra.Location = new System.Drawing.Point(513, 161);
             this.txtValorCompra.Name = "txtValorCompra";
             this.txtValorCompra.Size = new System.Drawing.Size(227, 36);
-            this.txtValorCompra.TabIndex = 1109;
+            this.txtValorCompra.TabIndex = 3;
             // 
             // txtKm
             // 
@@ -321,7 +310,7 @@
             this.txtKm.Location = new System.Drawing.Point(513, 227);
             this.txtKm.Name = "txtKm";
             this.txtKm.Size = new System.Drawing.Size(227, 36);
-            this.txtKm.TabIndex = 1110;
+            this.txtKm.TabIndex = 5;
             // 
             // cbModelo
             // 
@@ -331,7 +320,7 @@
             this.cbModelo.Location = new System.Drawing.Point(1004, 96);
             this.cbModelo.Name = "cbModelo";
             this.cbModelo.Size = new System.Drawing.Size(227, 37);
-            this.cbModelo.TabIndex = 1111;
+            this.cbModelo.TabIndex = 2;
             // 
             // txtValorVenda
             // 
@@ -341,7 +330,7 @@
             this.txtValorVenda.Location = new System.Drawing.Point(1004, 162);
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.Size = new System.Drawing.Size(227, 36);
-            this.txtValorVenda.TabIndex = 1112;
+            this.txtValorVenda.TabIndex = 4;
             // 
             // btnAdicionar
             // 
@@ -354,7 +343,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(173, 771);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(180, 47);
-            this.btnAdicionar.TabIndex = 1115;
+            this.btnAdicionar.TabIndex = 11;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
@@ -370,7 +359,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(420, 771);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(180, 47);
-            this.btnAlterar.TabIndex = 1116;
+            this.btnAlterar.TabIndex = 12;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -386,7 +375,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(667, 771);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(161, 47);
-            this.btnExcluir.TabIndex = 1117;
+            this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -402,7 +391,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(905, 771);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(180, 45);
-            this.btnCancelar.TabIndex = 1118;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -418,7 +407,7 @@
             this.btnPesquisar.Location = new System.Drawing.Point(1152, 771);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(180, 45);
-            this.btnPesquisar.TabIndex = 1119;
+            this.btnPesquisar.TabIndex = 15;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = false;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
@@ -435,7 +424,7 @@
             this.cbSituacao.Location = new System.Drawing.Point(1004, 228);
             this.cbSituacao.Name = "cbSituacao";
             this.cbSituacao.Size = new System.Drawing.Size(227, 37);
-            this.cbSituacao.TabIndex = 1120;
+            this.cbSituacao.TabIndex = 6;
             // 
             // lblObs
             // 
@@ -458,7 +447,7 @@
             this.txtObs.MaxLength = 1000;
             this.txtObs.Name = "txtObs";
             this.txtObs.Size = new System.Drawing.Size(227, 36);
-            this.txtObs.TabIndex = 1121;
+            this.txtObs.TabIndex = 8;
             // 
             // lblAno
             // 
@@ -480,7 +469,7 @@
             this.txtAno.Mask = "0000";
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(227, 36);
-            this.txtAno.TabIndex = 1114;
+            this.txtAno.TabIndex = 9;
             // 
             // txtPlaca
             // 
@@ -490,7 +479,19 @@
             this.txtPlaca.Location = new System.Drawing.Point(513, 291);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(227, 36);
-            this.txtPlaca.TabIndex = 1110;
+            this.txtPlaca.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(1180, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(139, 25);
+            this.label5.TabIndex = 1122;
+            this.label5.Text = "GRAVAR OFFLINE";
             // 
             // frmVeiculo
             // 
@@ -498,6 +499,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1440, 884);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtObs);
             this.Controls.Add(this.cbSituacao);
             this.Controls.Add(this.btnExcluir);
@@ -516,9 +518,8 @@
             this.Controls.Add(this.lblSituacao);
             this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.lblFiltrarPeloNome);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.picAnexarFotos);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblSelecioneModelo);
             this.Controls.Add(this.lblSelecioneMarca);
             this.Controls.Add(this.lblValorVenda);
@@ -529,7 +530,7 @@
             this.Controls.Add(this.grdAdicionais);
             this.Controls.Add(this.lblCadastrarVeiculo);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.picVendedorAtivo);
+            this.Controls.Add(this.picGravarOffline);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnPesquisar);
             this.Name = "frmVeiculo";
@@ -538,8 +539,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAdicionais)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVendedorAtivo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGravarOffline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnexarFotos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,13 +548,12 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblSelecioneMarca;
         private System.Windows.Forms.Label lblQuilometragem;
         private System.Windows.Forms.DataGridView grdAdicionais;
         private System.Windows.Forms.Label lblCadastrarVeiculo;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox picVendedorAtivo;
+        private System.Windows.Forms.PictureBox picGravarOffline;
         private System.Windows.Forms.Label lblFiltrarPeloNome;
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.Label lblSelecioneModelo;
@@ -563,7 +563,7 @@
         private System.Windows.Forms.Label lblSituacao;
         private System.Windows.Forms.CheckBox chkLeilao;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox picAnexarFotos;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtValorCompra;
         private System.Windows.Forms.TextBox txtKm;
@@ -580,5 +580,6 @@
         private System.Windows.Forms.Label lblAno;
         private System.Windows.Forms.MaskedTextBox txtAno;
         private System.Windows.Forms.TextBox txtPlaca;
+        private System.Windows.Forms.Label label5;
     }
 }

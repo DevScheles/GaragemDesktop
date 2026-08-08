@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace GaragemDesktop
 {
@@ -55,15 +57,52 @@ namespace GaragemDesktop
         #region Eventos
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            //if (ValidarCampos())
+            //{
+            //    Cadastrar();
+            //    LimparCampos();
+            //    Consultar();
+            //    Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+            //}
             if (ValidarCampos())
             {
-                Cadastrar();
-                LimparCampos();
-                Consultar();
-                Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+
+                try
+                {
+                    if (picGravarOffline.Tag.ToString() == "on")
+                    {
+                        // Ligar
+                        picGravarOffline.Image = Properties.Resources.button_ligado;
+                        picGravarOffline.Tag = "on";
+                        CadastrarOff();
+                        LimparCampos();
+                        Util.ExibirMsg(Util.TipoMsg.Informativo);
+
+                    }
+
+
+                    else
+                    {
+                        // Desligar
+                        picGravarOffline.Image = Properties.Resources.button_desligado;
+                        picGravarOffline.Tag = "off";
+                        Cadastrar();
+                        LimparCampos();
+                        Consultar();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Util.ConfigurarEstadoTela(Util.EstadoTela.Novo, btnAdicionar, btnAlterar, btnExcluir);
+                }
             }
-           
         }
+
+
+
+
+
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
@@ -114,7 +153,7 @@ namespace GaragemDesktop
 
         #region Métodos
 
-       
+
 
         private bool ValidarCampos()
         {
@@ -174,11 +213,52 @@ namespace GaragemDesktop
                 objDAO.CadastrarModelo(objModelo);
                 Util.ExibirMsg(Util.TipoMsg.Informativo);
             }
-            catch 
+            catch
             {
                 Util.ExibirMsg(Util.TipoMsg.Erro);
             }
-           
+
+        }
+
+
+        private void CadastrarOff()
+        {
+            XmlDocument xml = new XmlDocument();
+            string nomeArquivo = Util.DevolverNomeArquivo(Util.ArquivoTela.Modelo);
+
+            if (!File.Exists(nomeArquivo))
+            {
+                //Cria o XML com a base
+                XmlElement noModelo = xml.CreateElement("modelo");
+                xml.AppendChild(noModelo);
+            }
+            else
+            {
+                xml.Load(nomeArquivo);
+            }
+
+            XmlElement xmlItem = xml.CreateElement("item");
+
+            XmlElement xmlMarca = xml.CreateElement("marcaId");
+            xmlMarca.InnerText = Convert.ToString(cbSelecioneMarca.SelectedValue);
+            xmlItem.AppendChild(xmlMarca);
+
+            XmlElement xmlModelo = xml.CreateElement("nome");
+            xmlModelo.InnerText = txtNome.Text.Trim();
+            xmlItem.AppendChild(xmlModelo);
+
+            XmlElement xmlCodGaragem = xml.CreateElement("idgaragem");
+            xmlCodGaragem.InnerText = Util.CodigoLogado.ToString();
+            xmlItem.AppendChild(xmlCodGaragem);
+
+            //Recupera o nó raiz
+            XmlNode xmlRaiz = xml.SelectSingleNode("modelo");
+
+            xmlRaiz.AppendChild(xmlItem);
+
+            xml.Save(nomeArquivo);
+
+
         }
 
         private void Alterar()
@@ -207,8 +287,18 @@ namespace GaragemDesktop
 
         private void Excluir()
         {
-            ModeloDAO objDAO = new ModeloDAO();
-            objDAO.ExcluirModelo(codigoRegistro);
+            try
+            {
+                ModeloDAO objDAO = new ModeloDAO();
+                objDAO.ExcluirModelo(codigoRegistro);
+                Util.ExibirMsg(Util.TipoMsg.Informativo);
+                LimparCampos();
+            }
+
+            catch
+            {
+                Util.ExibirMsg(Util.TipoMsg.Erro);
+            }
         }
 
         private void Consultar()
@@ -218,13 +308,13 @@ namespace GaragemDesktop
             grdResultado.DataSource = lstModelos;
             grdResultado.Columns["ObjEditar"].Visible = false;
 
-           
+
         }
 
 
         #endregion
 
-       
+
     }
 }
 

@@ -88,11 +88,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(496, 72);
+            this.label1.Location = new System.Drawing.Point(544, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 35);
+            this.label1.Size = new System.Drawing.Size(345, 35);
             this.label1.TabIndex = 1032;
-            this.label1.Text = "GERENCIE SEUS ARQUIVOS COM RAPIDEZ";
+            this.label1.Text = "GERENCIE SEUS ARQUIVOS XML";
             // 
             // pictureBox2
             // 
@@ -127,7 +127,9 @@
             this.cbSelecioneTela.Items.AddRange(new object[] {
             "Vendedor",
             "Marca",
-            "Modelo"});
+            "Modelo",
+            "Adicional",
+            "Veiculo"});
             this.cbSelecioneTela.Location = new System.Drawing.Point(687, 162);
             this.cbSelecioneTela.Name = "cbSelecioneTela";
             this.cbSelecioneTela.Size = new System.Drawing.Size(227, 37);
@@ -193,6 +195,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Name = "frmSubirOnline";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSubirOnline";
             this.Load += new System.EventHandler(this.frmSubirOnline_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();

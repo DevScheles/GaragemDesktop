@@ -88,6 +88,37 @@ namespace GaragemDesktop
                 Util.ConfigurarEstadoTela(Util.EstadoTela.Edicao, btnAdicionar, btnAlterar, btnExcluir);
             }
         }
+
+        private void txtNomeFiltro_TextChanged(object sender, EventArgs e)
+        {
+            Consultar();
+        }
+
+        private void txtCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtCpf_Leave(object sender, EventArgs e)
+        {
+            if (!Util.ValidarCpf(txtCpf.Text))
+            {
+                Util.ExibirMsg(Util.TipoMsg.CpfInvalido, txtCpf.Text);
+                txtCpf.Clear();
+                return;
+            }
+
+            if (VerificarCpfDuplicado())
+            {
+                Util.ExibirMsg(Util.TipoMsg.CpfDuplicado, txtCpf.Text);
+                txtCpf.Clear();
+            }
+        }
+
+        private void grdResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         #endregion
 
 
@@ -202,10 +233,10 @@ namespace GaragemDesktop
                 Acesso objAcesso = new Acesso();
 
                 objAcesso.Login = txtCpf.Text;
-                objAcesso.Senha = txtCpf.Text;
+                objAcesso.Senha =Seguranca.GerarHash(txtCpf.Text);
                 objAcesso.Status = 1;
                 objAcesso.Tipo = (int)Util.TipoUsuario.Vendedor;
-
+                objAcesso.GaragemId = Util.CodigoLogado;
 
                 objVendedor.Acesso.Add(objAcesso);
                 objDao.CadastrarVendedor(objVendedor);
@@ -263,31 +294,6 @@ namespace GaragemDesktop
         
         #endregion
 
-        private void txtNomeFiltro_TextChanged(object sender, EventArgs e)
-        {
-            Consultar();
-        }
-
-        private void txtCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-            
-        }
-
-        private void txtCpf_Leave(object sender, EventArgs e)
-        {
-            if (!Util.ValidarCpf(txtCpf.Text))
-            {
-                Util.ExibirMsg(Util.TipoMsg.CpfInvalido, txtCpf.Text);
-                txtCpf.Clear();
-                return;
-            }
-            
-            if (VerificarCpfDuplicado())
-            {
-                Util.ExibirMsg(Util.TipoMsg.CpfDuplicado, txtCpf.Text);
-                txtCpf.Clear();
-            }
-        }
-
+       
     }
 }

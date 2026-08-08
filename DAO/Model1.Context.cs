@@ -34,7 +34,7 @@ namespace DAO
         public virtual DbSet<Veiculo> Veiculo { get; set; }
         public virtual DbSet<Vendedor> Vendedor { get; set; }
         public virtual DbSet<Modelo> Modelo { get; set; }
-        public virtual DbSet<Acesso> Acesso { get; set; }
         public virtual DbSet<Venda> Venda { get; set; }
+        public virtual DbSet<Acesso> Acesso { get; set; }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdicionais));
-            this.txtAdicionais = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -49,15 +49,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtAdicionais
+            // txtNome
             // 
-            this.txtAdicionais.BackColor = System.Drawing.Color.Maroon;
-            this.txtAdicionais.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdicionais.ForeColor = System.Drawing.Color.White;
-            this.txtAdicionais.Location = new System.Drawing.Point(593, 183);
-            this.txtAdicionais.Name = "txtAdicionais";
-            this.txtAdicionais.Size = new System.Drawing.Size(387, 36);
-            this.txtAdicionais.TabIndex = 1132;
+            this.txtNome.BackColor = System.Drawing.Color.Maroon;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.ForeColor = System.Drawing.Color.White;
+            this.txtNome.Location = new System.Drawing.Point(593, 183);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(387, 36);
+            this.txtNome.TabIndex = 1132;
             // 
             // btnExcluir
             // 
@@ -205,6 +205,7 @@
             this.picGravarOffline.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picGravarOffline.TabIndex = 1145;
             this.picGravarOffline.TabStop = false;
+            this.picGravarOffline.Click += new System.EventHandler(this.picGravarOffline_Click_1);
             // 
             // pictureBox2
             // 
@@ -237,7 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(1419, 807);
-            this.Controls.Add(this.txtAdicionais);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
@@ -252,6 +253,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Name = "frmAdicionais";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAdicionais";
             this.Load += new System.EventHandler(this.frmAdicionais_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdResultado)).EndInit();
@@ -265,7 +267,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtAdicionais;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnAdicionar;

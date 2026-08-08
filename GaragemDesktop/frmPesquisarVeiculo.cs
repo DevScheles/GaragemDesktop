@@ -17,11 +17,14 @@ namespace GaragemDesktop
     {
         bool ehPrimeiraVez = true;
         bool ehPrimeiraVezMarca = true;
-        public frmPesquisarVeiculo()
+        frmVeiculo frmTelaPai;
+
+        public frmPesquisarVeiculo(frmVeiculo frmApontamento)
         {
             InitializeComponent();
             Util.ConfigurarFormulário(this, Texto.TITULO_PESQUISA_VEICULO);
             Util.ConfigurarGrid(grdResultado);
+            frmTelaPai = frmApontamento;
         }
 
         #region Eventos
@@ -144,6 +147,18 @@ namespace GaragemDesktop
 
         }
 
-       
+        private void grdResultado_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(grdResultado.RowCount > 0)
+            {
+                VeiculoVO objLinha = (VeiculoVO)grdResultado.CurrentRow.DataBoundItem;
+
+                Veiculo objPassarParaOutraTela = objLinha.objEdicao;
+
+                frmTelaPai.DetalharVeiculo(objPassarParaOutraTela);
+
+                this.Close();
+            }
+        }
     }
 }

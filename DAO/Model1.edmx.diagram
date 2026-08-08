@@ -25,14 +25,14 @@
         <AssociationConnector Association="db_garagem.FK_Modelo_Garagem" />
         <AssociationConnector Association="db_garagem.FK_Modelo_Marca" />
         <AssociationConnector Association="db_garagem.FK_Veiculo_Modelo" />
-        <EntityTypeShape EntityType="db_garagem.Acesso" Width="1.5" PointX="5.25" PointY="13.625" />
-        <AssociationConnector Association="db_garagem.FK_Acesso_Garagem" />
-        <AssociationConnector Association="db_garagem.FK_Acesso_Vendedor" />
         <EntityTypeShape EntityType="db_garagem.Venda" Width="1.5" PointX="10.5" PointY="16.25" />
         <AssociationConnector Association="db_garagem.FK_Venda_Cliente" />
         <AssociationConnector Association="db_garagem.FK_Venda_Garagem" />
         <AssociationConnector Association="db_garagem.FK_Venda_Veiculo" />
         <AssociationConnector Association="db_garagem.FK_Venda_Vendedor" />
+        <EntityTypeShape EntityType="db_garagem.Acesso" Width="1.5" PointX="5.25" PointY="13.625" />
+        <AssociationConnector Association="db_garagem.FK_Acesso_Garagem" />
+        <AssociationConnector Association="db_garagem.FK_Acesso_Vendedor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -55,6 +55,8 @@ namespace GaragemDesktop
                         picGravarOffline.Image = Properties.Resources.button_desligado;
                         picGravarOffline.Tag = "off";
                         Cadastrar();
+                        LimparCampos();
+                        Consultar();
                     }
                 }
 
@@ -277,5 +279,7 @@ namespace GaragemDesktop
                 picGravarOffline.Tag = "off";
             }
         }
+
+
     }
 }

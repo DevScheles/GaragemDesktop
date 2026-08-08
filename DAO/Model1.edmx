@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Senha" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="90" Nullable="false" />
           <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="GaragemId" Type="int" />
           <Property Name="VendedorId" Type="int" />
@@ -43,7 +43,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Foto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="varchar(max)" Nullable="false" />
           <Property Name="VeiculoId" Type="int" Nullable="false" />
           <Property Name="GaragemId" Type="int" Nullable="false" />
         </EntityType>
@@ -474,7 +474,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Foto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VeiculoId" Type="Int32" Nullable="false" />
           <Property Name="GaragemId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Garagem" Relationship="Self.FK_Foto_Garagem" FromRole="Foto" ToRole="Garagem" />
@@ -493,8 +493,8 @@
           <NavigationProperty Name="Veiculo" Relationship="Self.FK_Veiculo_Garagem" FromRole="Garagem" ToRole="Veiculo" />
           <NavigationProperty Name="Vendedor" Relationship="Self.FK_Vendedor_Garagem" FromRole="Garagem" ToRole="Vendedor" />
           <NavigationProperty Name="Modelo" Relationship="db_garagem.FK_Modelo_Garagem" FromRole="Garagem" ToRole="Modelo" />
-          <NavigationProperty Name="Acesso" Relationship="db_garagem.FK_Acesso_Garagem" FromRole="Garagem" ToRole="Acesso" />
           <NavigationProperty Name="Venda" Relationship="db_garagem.FK_Venda_Garagem" FromRole="Garagem" ToRole="Venda" />
+          <NavigationProperty Name="Acesso" Relationship="db_garagem.FK_Acesso_Garagem" FromRole="Garagem" ToRole="Acesso" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -541,8 +541,8 @@
           <Property Name="Comissao" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Vendedor" FromRole="Vendedor" ToRole="Cliente" />
           <NavigationProperty Name="Garagem" Relationship="Self.FK_Vendedor_Garagem" FromRole="Vendedor" ToRole="Garagem" />
-          <NavigationProperty Name="Acesso" Relationship="db_garagem.FK_Acesso_Vendedor" FromRole="Vendedor" ToRole="Acesso" />
           <NavigationProperty Name="Venda" Relationship="db_garagem.FK_Venda_Vendedor" FromRole="Vendedor" ToRole="Venda" />
+          <NavigationProperty Name="Acesso" Relationship="db_garagem.FK_Acesso_Vendedor" FromRole="Vendedor" ToRole="Acesso" />
         </EntityType>
         <Association Name="FK_Adicional_Garagem">
           <End Role="Garagem" Type="Self.Garagem" Multiplicity="1" />
@@ -701,15 +701,6 @@
             <End Role="Modelo" EntitySet="Modelo" />
             <End Role="Veiculo" EntitySet="Veiculo" />
           </AssociationSet>
-          <EntitySet Name="Acesso" EntityType="db_garagem.Acesso" />
-          <AssociationSet Name="FK_Acesso_Garagem" Association="db_garagem.FK_Acesso_Garagem">
-            <End Role="Garagem" EntitySet="Garagem" />
-            <End Role="Acesso" EntitySet="Acesso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Acesso_Vendedor" Association="db_garagem.FK_Acesso_Vendedor">
-            <End Role="Vendedor" EntitySet="Vendedor" />
-            <End Role="Acesso" EntitySet="Acesso" />
-          </AssociationSet>
           <EntitySet Name="Venda" EntityType="db_garagem.Venda" />
           <AssociationSet Name="FK_Venda_Cliente" Association="db_garagem.FK_Venda_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
@@ -726,6 +717,15 @@
           <AssociationSet Name="FK_Venda_Vendedor" Association="db_garagem.FK_Venda_Vendedor">
             <End Role="Vendedor" EntitySet="Vendedor" />
             <End Role="Venda" EntitySet="Venda" />
+          </AssociationSet>
+          <EntitySet Name="Acesso" EntityType="db_garagem.Acesso" />
+          <AssociationSet Name="FK_Acesso_Garagem" Association="db_garagem.FK_Acesso_Garagem">
+            <End Role="Garagem" EntitySet="Garagem" />
+            <End Role="Acesso" EntitySet="Acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acesso_Vendedor" Association="db_garagem.FK_Acesso_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Acesso" EntitySet="Acesso" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Modelo">
@@ -773,44 +773,6 @@
             </Principal>
             <Dependent Role="Veiculo">
               <PropertyRef Name="ModeloId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Acesso">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Senha" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="Int32" Nullable="false" />
-          <Property Name="GaragemId" Type="Int32" />
-          <Property Name="VendedorId" Type="Int32" />
-          <Property Name="Status" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Garagem" Relationship="db_garagem.FK_Acesso_Garagem" FromRole="Acesso" ToRole="Garagem" />
-          <NavigationProperty Name="Vendedor" Relationship="db_garagem.FK_Acesso_Vendedor" FromRole="Acesso" ToRole="Vendedor" />
-        </EntityType>
-        <Association Name="FK_Acesso_Garagem">
-          <End Type="db_garagem.Garagem" Role="Garagem" Multiplicity="0..1" />
-          <End Type="db_garagem.Acesso" Role="Acesso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Garagem">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Acesso">
-              <PropertyRef Name="GaragemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Acesso_Vendedor">
-          <End Type="db_garagem.Vendedor" Role="Vendedor" Multiplicity="0..1" />
-          <End Type="db_garagem.Acesso" Role="Acesso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vendedor">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Acesso">
-              <PropertyRef Name="VendedorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -876,6 +838,44 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Venda">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Acesso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="GaragemId" Type="Int32" />
+          <Property Name="VendedorId" Type="Int32" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Garagem" Relationship="db_garagem.FK_Acesso_Garagem" FromRole="Acesso" ToRole="Garagem" />
+          <NavigationProperty Name="Vendedor" Relationship="db_garagem.FK_Acesso_Vendedor" FromRole="Acesso" ToRole="Vendedor" />
+        </EntityType>
+        <Association Name="FK_Acesso_Garagem">
+          <End Type="db_garagem.Garagem" Role="Garagem" Multiplicity="0..1" />
+          <End Type="db_garagem.Acesso" Role="Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
+              <PropertyRef Name="GaragemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acesso_Vendedor">
+          <End Type="db_garagem.Vendedor" Role="Vendedor" Multiplicity="0..1" />
+          <End Type="db_garagem.Acesso" Role="Acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Acesso">
               <PropertyRef Name="VendedorId" />
             </Dependent>
           </ReferentialConstraint>
@@ -985,19 +985,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Acesso">
-            <EntityTypeMapping TypeName="db_garagem.Acesso">
-              <MappingFragment StoreEntitySet="Acesso">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
-                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Venda">
             <EntityTypeMapping TypeName="db_garagem.Venda">
               <MappingFragment StoreEntitySet="Venda">
@@ -1010,6 +997,19 @@
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Acesso">
+            <EntityTypeMapping TypeName="db_garagem.Acesso">
+              <MappingFragment StoreEntitySet="Acesso">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
+                <ScalarProperty Name="GaragemId" ColumnName="GaragemId" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

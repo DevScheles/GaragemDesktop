@@ -56,6 +56,7 @@
             this.grdResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdResultado.Size = new System.Drawing.Size(1030, 389);
             this.grdResultado.TabIndex = 1045;
+            this.grdResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdResultado_CellClick);
             // 
             // lblBemVindo
             // 

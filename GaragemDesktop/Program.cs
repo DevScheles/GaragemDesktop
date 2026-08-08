@@ -16,7 +16,15 @@ namespace GaragemDesktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+
+            frmTelaLogin login = new frmTelaLogin();
+
+            if(login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmPrincipal());
+            }
+
+            
         }
     }
 }

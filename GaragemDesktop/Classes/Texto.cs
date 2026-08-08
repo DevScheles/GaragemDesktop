@@ -18,6 +18,7 @@ namespace GaragemDesktop.Classes
         public static string TITULO_PESQUISA_VEICULO = "Filtrar Veículos";
         public static string TITULO_CONSULTAR_VENDAS = "Consultar Vendas";
         public static string TITULO_ADICIONAIS = "Gerenciar Adicionais";
+        public static string TITULO_SUBIRONLINE = "Subir Online";
 
     }
 }

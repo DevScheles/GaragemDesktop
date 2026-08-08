@@ -12,15 +12,30 @@ namespace GaragemDesktop.Classes
     public static class Util
 
     {
+        public static void ConfigurarToolTips(ToolTip toolTip, Dictionary<Control, string> controles)
+        {
+            toolTip.AutoPopDelay = 5000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 500;
+            toolTip.ShowAlways = true;
 
-        public static int CodigoLogado = 1;
+            foreach (var item in controles)
+            {
+                toolTip.SetToolTip(item.Key, item.Value);
+            }
+        }
+
+        public static int CodigoLogado;
 
 
         public enum ArquivoTela
         {
             Vendedor = 0,
             Marca = 1,
-            Modelo=2
+            Modelo = 2,
+            Adicional = 3,
+            Veiculo = 4,
+            Foto = 5
         }
 
         public const string PathXml = "C:\\Users\\Otávio\\source\\repos\\Projeto Garagem Desktop\\GaragemDesktop\\XML\\";
@@ -38,9 +53,18 @@ namespace GaragemDesktop.Classes
                     nome = "marca.xml";
                     break;
                 case ArquivoTela.Modelo:
-                    nome = "moddelo.xml";
+                    nome = "modelo.xml";
                     break;
-                
+                case ArquivoTela.Adicional:
+                    nome = "adicional.xml";
+                    break;
+                case ArquivoTela.Veiculo:
+                    nome = "veiculo.xml";
+                    break;
+                case ArquivoTela.Foto:
+                    nome = "foto.xml";
+                    break;
+
             }
 
             return PathXml + nome;
@@ -55,10 +79,10 @@ namespace GaragemDesktop.Classes
 
         public enum TipoUsuario
         {
-            Adm= 1,
-            Vendedor= 2
+            Adm = 1,
+            Vendedor = 2
         }
-        
+
 
         public enum TipoMsg
         {
@@ -69,24 +93,25 @@ namespace GaragemDesktop.Classes
             CpfDuplicado,
             CpfInvalido,
             NaoPodeExcluir,
-            NaoEncontrado
-            
+            NaoEncontrado,
+            NaoEncontradoUser
+
         }
 
-       public enum EstadoTela
+        public enum EstadoTela
         {
             Novo,
             Edicao
         }
 
-        public static void ConfigurarCombo(ComboBox combo,string display = "", string value = "")
+        public static void ConfigurarCombo(ComboBox combo, string display = "", string value = "")
         {
 
             if (display != "" && value != "")
             {
                 combo.DisplayMember = display;
                 combo.ValueMember = value;
-                
+
             }
             combo.DropDownStyle = ComboBoxStyle.DropDownList;
             combo.FlatStyle = FlatStyle.Flat;
@@ -95,7 +120,7 @@ namespace GaragemDesktop.Classes
             combo.ForeColor = Color.White;
 
 
-                
+
         }
 
         public static bool ExibirMsg(TipoMsg tipo, string campos = "")
@@ -110,23 +135,26 @@ namespace GaragemDesktop.Classes
                 case TipoMsg.Atencao:
                     MessageBox.Show("Preencher o(s) campo(s)\n" + campos, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
-                case TipoMsg.Informativo: 
+                case TipoMsg.Informativo:
                     MessageBox.Show("Ação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
-                case TipoMsg.CpfDuplicado: 
+                case TipoMsg.CpfDuplicado:
                     MessageBox.Show("CPF já Cadastrado:\n" + campos, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
-                case TipoMsg.CpfInvalido: 
+                case TipoMsg.CpfInvalido:
                     MessageBox.Show("CPF inválido:\n" + campos, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
-                case TipoMsg.NaoPodeExcluir: 
+                case TipoMsg.NaoPodeExcluir:
                     MessageBox.Show("Não pode ser excluido o registro:\n" + campos, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
-                case TipoMsg.NaoEncontrado: 
+                case TipoMsg.NaoEncontrado:
                     MessageBox.Show("Não foi encontrado nenhum registro:", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
-                case TipoMsg.ConfirmacaoExclusao: 
-                  if ( MessageBox.Show("Deseja confirmar a exclusão do registro:" + campos, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                case TipoMsg.NaoEncontradoUser:
+                    MessageBox.Show("Não foi encontrado nenhum Usuário com essas credenciais:", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case TipoMsg.ConfirmacaoExclusao:
+                    if (MessageBox.Show("Deseja confirmar a exclusão do registro:" + campos, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
                         ret = false;
                     }
@@ -147,7 +175,7 @@ namespace GaragemDesktop.Classes
         /// <param name="alterar">Botão Alterar</param>
         /// <param name="excluir">Botão Excluir</param>
 
-      public static void ConfigurarEstadoTela(EstadoTela estadoTela, Button adicionar, Button alterar, Button excluir)
+        public static void ConfigurarEstadoTela(EstadoTela estadoTela, Button adicionar, Button alterar, Button excluir)
         {
             switch (estadoTela)
             {
@@ -258,6 +286,16 @@ namespace GaragemDesktop.Classes
             grd.AllowUserToDeleteRows = false;
             grd.AllowUserToResizeRows = false;
         }
+
+        public static bool ConfirmarFecharTela(string mensagem)
+    => MessageBox.Show(mensagem, "Confirmação",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+
+
     }
+
+
 }
 
